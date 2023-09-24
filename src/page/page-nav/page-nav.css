@@ -1,0 +1,9 @@
+.page-nav {
+    display:flex;
+}
+
+.page-nav h4 {
+    flex:1;
+    text-align:center;
+    margin:0;
+}
