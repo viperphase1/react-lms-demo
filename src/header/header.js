@@ -1,7 +1,13 @@
+import Profile from "./profile.js";
+import './header.css'
+
 function Header() {
     return (
       <div className="header">
-        <h3>SVU - LMS</h3>
+
+        <h1>SVU - LMS</h1>
+
+        <Profile/>
       </div>
     );
   }

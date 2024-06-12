@@ -1,3 +1,18 @@
-.page-content {
+.main-content {
     padding-top: var(--padding);
+}
+
+.blockTitle {
+    margin-top: 20px;
+    text-align: left;
+    color: red;
+    font-size: 18px;
+}
+
+.blockContent {
+    margin-top: 10px;
+}
+
+.addBlockButton {
+    margin-top: 20px;
 }

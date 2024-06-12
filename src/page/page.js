@@ -1,18 +1,41 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { context } from '../context.js';
 import PageNav from './page-nav/page-nav.js';
+import AddBlock from './add-block.js'
 import './page.css';
 
 function Page() {
+
+    const [showBlockEdit, setEditBlock] = useState(false);
     const state = useContext(context);
-    const page = state.classes[state.class - 1].pages[state.page - 1];
+    
+    let page;
+    if (state.alldata) {
+        page = state.alldata[state.course].pages[state.page];
+    }
+
     return (
-        <div className="page">
-            <PageNav page={page}></PageNav>
-            <div className="page-content">
-                <h2>{page.title}</h2>
-                <p>{page.content}</p>
+        <div>
+            {state.alldata ? <>
+            <PageNav/>
+            <div className="main-content">
+
+                {state.alldata[state.course].pages[state.page].blocks.map((block, idx) => (
+                    <>
+                    <div className='blockTitle'>{block.title}</div>
+                    <div className='blockContent'>{block.content}</div> 
+                    </>
+                ))}
+                
+                {!showBlockEdit ? 
+                    <button className='addBlockButton' onClick={() => setEditBlock(true)}>Add Block</button> : ""
+                }
+                {showBlockEdit ?  
+                    <AddBlock showEditBlock={setEditBlock}></AddBlock>
+                : ''}
+
             </div>
+            </> : null}
         </div>
     );
   }

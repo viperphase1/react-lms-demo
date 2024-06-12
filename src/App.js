@@ -1,26 +1,42 @@
-import './variables.css';
 import './App.css';
-import Header from './header/header';
-import Sidebar from './sidebar/sidebar';
-import Page from './page/page';
+import Header from './header/header.js';
+import Sidebar from './sidebar/sidebar.js';
+import Page from './page/page.js';
 import { useReducer } from 'react';
+import { useState, useEffect } from 'react';
 import { context, dispatchContext } from './context.js';
-import { defaultState } from './state';
+import { defaultState }  from './state.js';
+import LoginForm from './login/login.js';
 
 function App() {
   const [state, dispatch] = useReducer(
     stateReducer,
-    defaultState
+    defaultState,
   );
+
+  const userIdx = state.user;
+  const showLoginForm = state.showLoginForm;
+
   return (
     <context.Provider value={state}>
       <dispatchContext.Provider value={dispatch}>
+        
         <div className="App">
-          <Header></Header>
-          <div className="post-header">
-            <Sidebar></Sidebar>
-            <Page></Page>
-          </div>
+          <Header/>
+          {userIdx & !showLoginForm ? <>
+
+            <div className="therest">
+              <div className="theleft">
+              <Sidebar/>
+              </div>
+              <div className = "theright">
+              <Page/>
+              </div>
+            </div>
+
+            </>: <LoginForm/> }
+
+
         </div>
       </dispatchContext.Provider>
     </context.Provider>
@@ -29,11 +45,11 @@ function App() {
 
 function stateReducer(state, action) {
   switch (action.type) {
-    case 'changeClass': {
+    case 'changeCourse': {
       return {
         ...state,
-        class: action.classNum,
-        page: 1
+        course: action.courseNum,
+        page: 0
       };
     }
     case 'changePage': {
@@ -42,6 +58,25 @@ function stateReducer(state, action) {
         page: action.pageNum
       }
     }
+    case 'changeUser': {
+      return {
+        ...state,
+        user: action.userNum
+      }
+    }
+    case 'updateShowLoginForm': {
+      return {
+        ...state,
+        showLoginForm: action.value
+      }
+    }
+    case 'changeAllData': {
+      return {
+        ...state,
+        alldata: action.alldata
+      }
+    }
+
     default: {
       throw Error('Unknown action: ' + action.type);
     }

@@ -1,3 +1,5 @@
+@import 'material-symbols/outlined';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,24 +13,11 @@ body, html, #root {
   height:100%;
 }
 
+:root {
+  --padding2: 30px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.caret {
-  border-left: solid 20px transparent; 
-  border-right: solid 20px transparent; 
-  border-bottom: solid 20px #020202; 
-  height: 0; 
-  width: 0;
-  cursor:pointer;
-}
-
-.caret.left {
-  transform:rotateZ(-90deg);
-}
-
-.caret.right {
-  transform:rotateZ(90deg);
 }

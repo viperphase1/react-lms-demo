@@ -4,28 +4,28 @@
   height:100%;
 }
 
-.header {
-  text-align:center;
-  border-bottom:1px solid #020202;
-}
-
-.post-header {
+.therest {
   display:flex;
   flex:1;
 }
 
-.sidebar {
+.theleft {
   flex:1;
-  padding:var(--padding);
+  padding:var(--padding2);
   border-right:1px solid #020202;
 }
 
-.page {
+.theright {
   flex:4;
-  padding: var(--padding);
+  padding: var(--padding2);
 }
 
 .hidden {
   opacity:0;
   pointer-events:none;
+}
+
+.font-36 
+{ 
+  font-size: 36px; 
 }
